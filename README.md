@@ -22,32 +22,66 @@ $ npm install duyb-cli-gulp
 
 ## Usage
 
-<!-- TODO: Introduction of API use -->
+- create pages.config.js file in root
 
-```javascript
-const duybPages = require('duyb-cli-gulp');
-const result = duybPages('duyb');
-// result => '1255248666@qq.com'
+```js
+module.exports = {
+  // demo: data object for swig ...
+  data: {
+    menus: [
+      {
+        name: 'Home',
+        icon: 'aperture',
+        link: 'index.html',
+      },
+      {
+        name: 'Features',
+        link: 'features.html',
+      },
+      {
+        name: 'About',
+        link: 'about.html',
+      },
+      {
+        name: 'Contact',
+        link: '#',
+        children: [
+          {
+            name: 'Twitter',
+            link: 'https://twitter.com/thxl2010',
+          },
+          {
+            name: 'About',
+            link: 'https://weibo.com/thxl2010',
+          },
+          {
+            name: 'divider',
+          },
+          {
+            name: 'About',
+            link: 'https://github.com/thxl2010',
+          },
+        ],
+      },
+    ],
+    pkg: require('./package.json'),
+    date: new Date(),
+    // ...
+  },
+};
 ```
 
-## API
+- gulp task in NPM Scripts
 
-<!-- TODO: Introduction of API -->
-
-### duybPages(name[, options])
-
-#### name
-
-- Type: `string`
-- Details: name string
-
-#### options
-
-##### host
-
-- Type: `string`
-- Details: host string
-- Default: `'github.com'`
+  ```json
+  {
+    "scripts": {
+      "clean": "duyb-cli-gulp clean",
+      "dev": "duyb-cli-gulp dev",
+      "build": "duyb-cli-gulp build"
+    }
+  }
+  ```
 
 ## Contributing
 
